@@ -20,6 +20,8 @@ namespace SimpleCalculator
 
                 double result = calculatorEngine.Calculate(operation, firstNumber, secondNumber);
 
+                //i do poopy stringbuilder when dll works 
+
                 if(operation == "+" || operation.ToLower() == "add")
                 {
                     Console.WriteLine("The result of the addition of {0} {1} is equal to {2:F2}", firstNumber, secondNumber,result);
