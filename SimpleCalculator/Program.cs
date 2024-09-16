@@ -9,18 +9,35 @@ namespace SimpleCalculator
             try
             {
                 // Class to convert user input
-                InputConverter inputConverter = new InputConverter();
+                //InputConverter inputConverter = new InputConverter();
 
                 // Class to perform actual calculations
                 CalculatorEngine calculatorEngine = new CalculatorEngine();
 
-                double firstNumber = inputConverter.ConvertInputToNumeric(Console.ReadLine());
-                double secondNumber = inputConverter.ConvertInputToNumeric(Console.ReadLine());
+                double firstNumber = InputConverter.ConvertInputToNumeric(Console.ReadLine());
+                double secondNumber = InputConverter.ConvertInputToNumeric(Console.ReadLine());
                 string operation = Console.ReadLine();
 
                 double result = calculatorEngine.Calculate(operation, firstNumber, secondNumber);
 
-                Console.WriteLine(result);
+                if(operation == "+" || operation.ToLower() == "add")
+                {
+                    Console.WriteLine("The result of the addition of "+firstNumber +" and "
+                        + secondNumber+ " is "+result);
+                }
+                if (operation == "-" || operation.ToLower() == "substract")
+                {
+                    
+                }
+                else if (operation == "*" || operation.ToLower() == "multiply")
+                {
+                    
+                }
+                else if (operation == "/" || operation.ToLower() == "divide")
+                {
+                    
+                }
+
 
             } catch (Exception ex)
             {
