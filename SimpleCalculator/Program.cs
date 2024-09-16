@@ -22,20 +22,19 @@ namespace SimpleCalculator
 
                 if(operation == "+" || operation.ToLower() == "add")
                 {
-                    Console.WriteLine("The result of the addition of "+firstNumber +" and "
-                        + secondNumber+ " is "+result);
+                    Console.WriteLine("The result of the addition of {0} {1} is equal to {3:F2}", firstNumber, secondNumber,result);
                 }
                 if (operation == "-" || operation.ToLower() == "substract")
                 {
-                    
+                    Console.WriteLine("The result of the substraction of {0} {1} is equal to {3:F2}", firstNumber, secondNumber, result);
                 }
                 else if (operation == "*" || operation.ToLower() == "multiply")
                 {
-                    
+                    Console.WriteLine("The result of the multuplication of {0} {1} is equal to {3:F2}", firstNumber, secondNumber, result);
                 }
                 else if (operation == "/" || operation.ToLower() == "divide")
                 {
-                    
+                    Console.WriteLine("The result of the division of {0} {1} is equal to {3:F2}", firstNumber, secondNumber, result);
                 }
 
 

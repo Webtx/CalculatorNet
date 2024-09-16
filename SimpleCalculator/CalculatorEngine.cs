@@ -28,6 +28,10 @@ namespace SimpleCalculator
                 }
                 result = argFirstNumber / argSecondNumber;
             }
+
+            else if()
+
+
             else
             {
                 throw new ArgumentException("Invalid operation. Only +, -, *, / are supported");
@@ -39,9 +43,3 @@ namespace SimpleCalculator
 }
 
 
-
-return result;
-        
-        }
-    }
-}
