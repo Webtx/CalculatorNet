@@ -11,7 +11,10 @@ namespace SimpleCalculator
             if (argOperation == "+" || argOperation.ToLower() == "add") {
                 result = argFirstNumber + argSecondNumber;
             }
-
+            if (argOperation == "-" || argOperation.ToLower() == "substract")
+            {
+                result = argFirstNumber - argSecondNumber;
+            }
             return result;
         }
     }
