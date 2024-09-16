@@ -3,7 +3,7 @@
 namespace SimpleCalculator
 {
     public class InputConverter
-    {   
+    {
         public static double ConvertInputToNumeric(string argTextInput)
         {
             if (double.TryParse(argTextInput, out double result)) //out can be returned more than one value
@@ -17,3 +17,4 @@ namespace SimpleCalculator
             }
         }
     }
+}
