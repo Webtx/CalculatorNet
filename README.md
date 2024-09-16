@@ -3,6 +3,6 @@
 2- added exceptions to make it check if the conversion we input is a numeric number  <br>
 3- added necessary addition, substraction, division, multiplication functions <br>
 4- added modulus function <br>
-5- changed it to be readable for the outputs <br>
+5- made it more readable for the outputs <br>
 
 🐈‍⬛
