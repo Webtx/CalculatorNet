@@ -41,8 +41,7 @@ namespace SimpleCalculator
             } catch (Exception ex)
             {
                 // Normally, we'd log this error to a file.
-                //hello
-                //myturn
+
                 Console.WriteLine(ex.Message);
             }
 
