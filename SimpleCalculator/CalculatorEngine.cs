@@ -29,12 +29,15 @@ namespace SimpleCalculator
                 result = argFirstNumber / argSecondNumber;
             }
 
-            else if()
+            else if(argOperation == "%" || argOperation.ToLower() == "modulus")
+            {
+                result = argFirstNumber % argSecondNumber;
+            }
 
 
             else
             {
-                throw new ArgumentException("Invalid operation. Only +, -, *, / are supported");
+                throw new ArgumentException("Invalid operation. Only +, -, *, /, % are supported");
             }
 
             return result;
