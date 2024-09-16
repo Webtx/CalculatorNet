@@ -38,6 +38,10 @@ namespace SimpleCalculator
                 {
                     Console.WriteLine("The result of the division of {0} {1} is equal to {2:F2}", firstNumber, secondNumber, result);
                 }
+                else if (operation == "%" || operation.ToLower() == "modulus")
+                {
+                    Console.WriteLine("The modulus of {0} {1} is equal to {2:F2}", firstNumber, secondNumber, result);
+                }
 
 
             } catch (Exception ex)
