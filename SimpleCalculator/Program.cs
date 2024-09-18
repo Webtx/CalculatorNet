@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.NetworkInformation;
 
 namespace SimpleCalculator
 {
@@ -18,29 +19,36 @@ namespace SimpleCalculator
                 double firstNumber = InputConverter.ConvertInputToNumeric(Console.ReadLine());
 
 
-               /* while()
+                while(!double.TryParse(Console.ReadLine(), out firstNumber))
                 {
-                    Console.WriteLine("Please enter a valid number");
-                    firstNumber = InputConverter.ConvertInputToNumeric(Console.ReadLine());
+                     Console.WriteLine("Please enter a valid number");
+                     firstNumber = InputConverter.ConvertInputToNumeric(Console.ReadLine());
                 }
-                */
+                 
 
                 Console.WriteLine("Please enter a second number");
                 double secondNumber = InputConverter.ConvertInputToNumeric(Console.ReadLine());
 
 
-                /*while (double.TryParse(value, out value2))
+                while (!double.TryParse(Console.ReadLine(), out secondNumber))
                 {
                     Console.WriteLine("Please enter a valid number");
                     secondNumber = InputConverter.ConvertInputToNumeric(Console.ReadLine());
-                }*/
+                }
 
                 Console.WriteLine("Please enter an operation. The valid " +
                     "operations are: (+,-,*,/ or %) or (add, substract, multiply, divide or modulus");
                 string operation = Console.ReadLine();
 
-                /*
-                 To check operations*/
+                while (!operation.Equals("+") || !operation.Equals("-") || !operation.Equals("*") || 
+                    !operation.Equals("/") || !operation.Equals("%") || !operation.Equals("add") || 
+                    !operation.Equals("substract") ||!operation.Equals("multiply") || !operation.Equals("divide") ||
+                    !operation.Equals("modulus"))
+                {
+                    Console.WriteLine("Please enter a valid operation.The valid operations are:" +
+                        " (+,-,*,/ or %) or (add, substract, multiply, divide or modulus");
+                    operation = Console.ReadLine();
+                }
 
                 double result = calculatorEngine.Calculate(operation, firstNumber, secondNumber);
 
