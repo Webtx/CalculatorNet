@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Net.NetworkInformation;
+using System.Text;
+using Engine;
 
 namespace SimpleCalculator
 {
@@ -13,76 +15,89 @@ namespace SimpleCalculator
                 //InputConverter inputConverter = new InputConverter();
 
                 // Class to perform actual calculations
-                CalculatorEngine calculatorEngine = new CalculatorEngine();
+                CalculatorEngine1 calculatorEngine = new CalculatorEngine1();
 
-                Console.WriteLine("Please enter a number");
-                double firstNumber = InputConverter.ConvertInputToNumeric(Console.ReadLine());
+                double firstNumber = GetValidNumber("Please enter a number:");
 
+                
+                double secondNumber = GetValidNumber("Please enter a second number:");
 
-                while(!double.TryParse(Console.ReadLine(), out firstNumber))
-                {
-                     Console.WriteLine("Please enter a valid number");
-                     firstNumber = InputConverter.ConvertInputToNumeric(Console.ReadLine());
-                }
-                 
-
-                Console.WriteLine("Please enter a second number");
-                double secondNumber = InputConverter.ConvertInputToNumeric(Console.ReadLine());
+                Console.WriteLine("Please enter an operation (+, -, *, /, % or add, subtract, multiply, divide, modulus):");
+                
 
 
-                while (!double.TryParse(Console.ReadLine(), out secondNumber))
-                {
-                    Console.WriteLine("Please enter a valid number");
-                    secondNumber = InputConverter.ConvertInputToNumeric(Console.ReadLine());
-                }
 
                 Console.WriteLine("Please enter an operation. The valid " +
-                    "operations are: (+,-,*,/ or %) or (add, substract, multiply, divide or modulus");
+                    "operations are: (+,-,*,/ or %) or (add, subtract, multiply, divide or modulus");
                 string operation = Console.ReadLine();
 
-                while (!operation.Equals("+") || !operation.Equals("-") || !operation.Equals("*") || 
-                    !operation.Equals("/") || !operation.Equals("%") || !operation.Equals("add") || 
-                    !operation.Equals("substract") ||!operation.Equals("multiply") || !operation.Equals("divide") ||
-                    !operation.Equals("modulus"))
+                while (operation != "+" && operation != "-" && operation != "*" &&
+                       operation != "/" && operation != "%" &&
+                       operation != "add" && operation != "subtract" &&
+                       operation != "multiply" && operation != "divide" &&
+                       operation != "modulus")
                 {
                     Console.WriteLine("Please enter a valid operation.The valid operations are:" +
-                        " (+,-,*,/ or %) or (add, substract, multiply, divide or modulus");
+                        " (+,-,*,/ or %) or (add, subtract, multiply, divide or modulus");
                     operation = Console.ReadLine();
                 }
 
                 double result = calculatorEngine.Calculate(operation, firstNumber, secondNumber);
 
-                //i do poopy stringbuilder when dll works 
-
-                if(operation == "+" || operation.ToLower() == "add")
-                {
-                    Console.WriteLine("The result of the addition of {0} {1} is equal to {2:F2}", firstNumber, secondNumber,result);
-                }
-                if (operation == "-" || operation.ToLower() == "substract")
-                {
-                    Console.WriteLine("The result of the substraction of {0} {1} is equal to {2:F2}", firstNumber, secondNumber, result);
-                }
-                else if (operation == "*" || operation.ToLower() == "multiply")
-                {
-                    Console.WriteLine("The result of the multuplication of {0} {1} is equal to {2:F2}", firstNumber, secondNumber, result);
-                }
-                else if (operation == "/" || operation.ToLower() == "divide")
-                {
-                    Console.WriteLine("The result of the division of {0} {1} is equal to {2:F2}", firstNumber, secondNumber, result);
-                }
-                else if (operation == "%" || operation.ToLower() == "modulus")
-                {
-                    Console.WriteLine("The modulus of {0} {1} is equal to {2:F2}", firstNumber, secondNumber, result);
-                }
 
 
-            } catch (Exception ex)
-            {
-                // Normally, we'd log this error to a file.
+                StringBuilder sb = new StringBuilder();
 
-                Console.WriteLine(ex.Message);
+                if (operation == "+" || operation == "add")
+                {
+                    sb.AppendFormat("The result of adding {0} and {1} is {2:F2}", firstNumber, secondNumber, result);
+                }
+                else if (operation == "-" || operation == "subtract")
+                {
+                    sb.AppendFormat("The result of subtracting {0} from {1} is {2:F2}", secondNumber, firstNumber, result);
+                }
+                else if (operation == "*" || operation == "multiply")
+                {
+                    sb.AppendFormat("The result of multiplying {0} and {1} is {2:F2}", firstNumber, secondNumber, result);
+                }
+                else if (operation == "/" || operation == "divide")
+                {
+                    sb.AppendFormat("The result of dividing {0} by {1} is {2:F2}", firstNumber, secondNumber, result);
+                }
+                else if (operation == "%" || operation == "modulus")
+                {
+                    sb.AppendFormat("The modulus of {0} and {1} is {2:F2}", firstNumber, secondNumber, result);
+                }
+
+                // Output result
+                Console.WriteLine(sb.ToString());
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+        }
 
+        static double GetValidNumber(string prompt)
+        {
+            double number;
+            Console.WriteLine(prompt);
+            while (true)
+            {
+                try
+                {
+                    string input = Console.ReadLine();
+                    number = InputConverter.ConvertInputToNumeric(input);
+                    break; 
+                }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("Please enter a valid number:");
+                }
+            }
+            return number;
         }
     }
 }
+
+    
