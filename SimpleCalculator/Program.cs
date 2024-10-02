@@ -71,6 +71,7 @@ namespace SimpleCalculator
 
                 // Output result
                 Console.WriteLine(sb.ToString());
+                Console.ReadLine();
             }
             catch (Exception ex)
             {
